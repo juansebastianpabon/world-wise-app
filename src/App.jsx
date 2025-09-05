@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import HomePage from "./pages/HomePage";
@@ -7,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
 import CityList from "./components/CityList";
+import CountryList from "./components/CountryList";
 
 //Routear de forma declarativa
 const BASE_URL = "http://localhost:8000";
@@ -79,7 +81,12 @@ function App() {
           />
           <Route
             path='countries'
-            element={<p>List of Countries</p>}
+            element={
+              <CountryList
+                cities={cities}
+                isLoading={isLoading}
+              />
+            }
           />
           <Route
             path='form'
