@@ -1,4 +1,6 @@
 import styles from "./City.module.css";
+import Twemoji from "react-twemoji";
+import { useParams } from "react-router-dom";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -9,6 +11,8 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
+  const x = useParams();
+  console.log(x);
   // TEMP DATA
   const currentCity = {
     cityName: "Lisbon",
@@ -22,9 +26,9 @@ function City() {
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City name</h6>
+        <h6>City names</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <Twemoji options={{ className: "twemoji-city" }}>{emoji}</Twemoji>
         </h3>
       </div>
 
@@ -44,16 +48,15 @@ function City() {
         <h6>Learn more</h6>
         <a
           href={`https://en.wikipedia.org/wiki/${cityName}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+          target='_blank'
+          rel='noreferrer'>
           Check out {cityName} on Wikipedia &rarr;
         </a>
       </div>
 
-      <div>
+      {/* <div>
         <ButtonBack />
-      </div>
+      </div> */}
     </div>
   );
 }
