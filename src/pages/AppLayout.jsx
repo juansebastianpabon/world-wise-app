@@ -4,7 +4,6 @@ import Map from "../components/Map.jsx";
 function AppLayout() {
   return (
     <div className={styles.app}>
-      <span>Casas</span>
       <Sidebar />
       <Map />
     </div>
