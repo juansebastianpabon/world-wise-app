@@ -1,6 +1,10 @@
 import styles from "./City.module.css";
 import Twemoji from "react-twemoji";
+import { useCities } from "../contexts/CitiesContext.jsx";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import Spinner from "./Spinner.jsx";
+import BackButton from "./BackButton.jsx";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -11,18 +15,26 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const x = useParams();
-  console.log(x);
+  const { id } = useParams();
+  const { getCity, currentCity, isLoading } = useCities();
+
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
+
   // TEMP DATA
-  const currentCity = {
+  /*   const currentCity = {
     cityName: "Lisbon",
     emoji: "🇵🇹",
     date: "2027-10-31T15:59:59.138Z",
     notes: "My favorite city so far!",
-  };
+  }; */
 
   const { cityName, emoji, date, notes } = currentCity;
-
+  if (isLoading) return <Spinner />;
   return (
     <div className={styles.city}>
       <div className={styles.row}>
@@ -53,10 +65,7 @@ function City() {
           Check out {cityName} on Wikipedia &rarr;
         </a>
       </div>
-
-      {/* <div>
-        <ButtonBack />
-      </div> */}
+      <BackButton />
     </div>
   );
 }

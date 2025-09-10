@@ -10,7 +10,7 @@ import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import City from "./components/City.jsx";
 import Form from "./components/Form.jsx";
-import { CitiesProvider } from "./contexts/CityContext.jsx";
+import { CitiesProvider } from "./contexts/CitiesContext.jsx";
 //Routear de forma declarativa
 function App() {
   return (
