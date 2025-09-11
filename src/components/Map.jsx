@@ -5,13 +5,19 @@ import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext.jsx";
 import Twemoji from "react-twemoji";
 import { useMap, useMapEvents } from "react-leaflet/hooks";
-/* import { map } from "leaflet"; */
+import { useGeolocation } from "../hooks/useGeolocation.jsx";
+import Button from "./Button.jsx";
 
 function Map() {
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  /* const navigate = useNavigate(); */
   const { cities } = useCities();
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
   const [searchParams, setSearchParams] = useSearchParams();
+
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
 
@@ -21,16 +27,26 @@ function Map() {
     },
     [mapLat, mapLng]
   );
+
+  useEffect(
+    function () {
+      if (geolocationPosition)
+        setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    },
+    [geolocationPosition]
+  );
+
   return (
-    <div
-      className={styles.mapContainer}
-      /* onClick={() => {
-        navigate("form");
-      }} */
-    >
+    <div className={styles.mapContainer}>
+      <Button
+        type='position'
+        onClick={getPosition}>
+        {isLoadingPosition ? "Loading..." : "Use your position"}
+      </Button>
+
       <MapContainer
         center={mapPosition}
-        zoom={6}
+        zoom={7}
         scrollWheelZoom={true}
         className={styles.map}>
         <TileLayer
