@@ -6,11 +6,14 @@ import Message from "./Message.jsx";
 
 function CountryList() {
   const { cities, isLoading } = useCities();
+  console.log(cities);
   const countries = cities.reduce((arr, city) => {
     if (!arr.map((el) => el.country).includes(city.country))
       return [...arr, { country: city.country, emoji: city.emoji }];
     else return arr;
   }, []);
+
+  console.log(countries);
 
   if (isLoading) return <Spinner />;
 

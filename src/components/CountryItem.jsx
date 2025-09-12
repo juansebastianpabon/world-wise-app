@@ -1,5 +1,6 @@
 import styles from "./CountryItem.module.css";
 import Twemoji from "react-twemoji";
+import { useCities } from "../contexts/CitiesContext.jsx";
 
 function CountryItem({ country }) {
   return (
