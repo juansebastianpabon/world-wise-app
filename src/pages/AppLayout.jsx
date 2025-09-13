@@ -9,7 +9,7 @@ function AppLayout() {
     <div className={styles.app}>
       <Sidebar />
       <Map />
-      {isAuthenticated && <User />}
+      <User />
     </div>
   );
 }
