@@ -23,18 +23,6 @@
         "lat": "49.1242192485914",
         "lng": "26.542968750000004"
       }
-    },
-    {
-      "id": "bde7",
-      "cityName": "Cali",
-      "country": "Colombia",
-      "emoji": "🇨🇴",
-      "date": "2025-09-12T21:14:59.402Z",
-      "notes": "Fuia  a consumir chontaduro",
-      "position": {
-        "lat": "3.447624666646865",
-        "lng": "-76.47583007812501"
-      }
     }
   ]
 }

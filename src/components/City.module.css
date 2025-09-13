@@ -46,6 +46,12 @@
   color: var(--color-brand--1);
 }
 
+.cityName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 :global(.twemoji-city) {
   height: 5rem;
   width: auto;

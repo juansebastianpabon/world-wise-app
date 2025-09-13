@@ -38,10 +38,13 @@ function City() {
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City names</h6>
-        <h3>
-          <Twemoji options={{ className: "twemoji-city" }}>{emoji}</Twemoji>
-        </h3>
+        <h6>City name</h6>
+        <div className={styles.cityName}>
+          <p>{cityName}</p>
+          <h3>
+            <Twemoji options={{ className: "twemoji-city" }}>{emoji}</Twemoji>
+          </h3>
+        </div>
       </div>
 
       <div className={styles.row}>
